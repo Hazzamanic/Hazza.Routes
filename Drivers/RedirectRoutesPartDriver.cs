@@ -30,7 +30,12 @@ namespace Hazza.Routes.Drivers {
 
         protected override DriverResult Editor(RedirectRoutesPart part, IUpdateModel updater, dynamic shapeHelper) {
             var vm = new RedirectRouteViewModel();
-            updater.TryUpdateModel(vm, Prefix, null, null);
+            if(updater.TryUpdateModel(vm, Prefix, null, null)) {
+                if (part.Routes != vm.Routes)
+                    part.OldRoutes = vm.Routes;
+
+                part.Routes = vm.Routes;                
+            }
             return Editor(part, shapeHelper);
         }
 

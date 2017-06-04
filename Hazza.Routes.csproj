@@ -115,6 +115,10 @@
       <Project>{9916839C-39FC-4CEB-A5AF-89CA7E87119F}</Project>
       <Name>Orchard.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Orchard.Alias\Orchard.Alias.csproj">
+      <Project>{475B6C45-B27C-438B-8966-908B9D6D1077}</Project>
+      <Name>Orchard.Alias</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Orchard.Autoroute\Orchard.Autoroute.csproj">
       <Project>{66fccd76-2761-47e3-8d11-b45d0001ddaa}</Project>
       <Name>Orchard.Autoroute</Name>
@@ -128,6 +132,7 @@
     <Compile Include="Migrations.cs" />
     <Compile Include="Models\RedirectRoutesPart.cs" />
     <Compile Include="Routes.cs" />
+    <Compile Include="Services\IRouteService.cs" />
     <Compile Include="ViewModels\RedirectRouteViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
