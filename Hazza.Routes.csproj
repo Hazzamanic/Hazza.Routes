@@ -136,9 +136,6 @@
     <Compile Include="ViewModels\RedirectRouteViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts\RedirectRoutesPart.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\EditorTemplates\Parts\RedirectRoutesPart.cshtml" />
   </ItemGroup>
   <PropertyGroup>
