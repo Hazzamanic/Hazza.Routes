@@ -1,4 +1,4 @@
-Name: Hazza.Routes
+Name: Redirect Routes
 AntiForgery: enabled
 Author: Orchardizer
 Website: https://github.com/Hazzamanic/orchardizer
@@ -7,4 +7,4 @@ OrchardVersion: 1.10
 Description: Description for the module
 Features:
     Hazza.Routes:
-        Description: Description for feature Hazza.Routes.
+        Description: Set up 301/302 redirects for your content items

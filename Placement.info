@@ -16,6 +16,5 @@
     <Place Parts_Common_Metadata="-"/>
   </Match>
 -->
-<Place Parts_RedirectRoutesPart="Content:2" />
-<Place Parts_RedirectRoutesPart_Edit="Content:5" />
+<Place Parts_RedirectRoutesPart_Edit="Content:5#Redirects" />
 </Placement>

@@ -1,0 +1,19 @@
+﻿@model Hazza.Routes.Models.RedirectRoute
+@using Hazza.Routes.Helpers
+
+@using (Html.BeginCollectionItem("RedirectRoutesPart.Routes")) {
+    <div class="routerow">
+        <div>
+            @Html.LabelFor(e => e.Alias, T("Alias"))
+            @Html.TextBoxFor(e => e.Alias, new { @class = "textMedium" })
+        </div>
+        <div>
+            @Html.LabelFor(e => e.RedirectType, T("Redirect Type"))
+            @Html.EnumDropDownListFor(
+                e => e.RedirectType,
+                new {  }
+            )
+        </div>
+        <div><a href="#" class="deleterow">Remove</a></div>
+    </div>
+}

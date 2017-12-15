@@ -3,4 +3,30 @@
 <fieldset>
     @Html.HiddenFor(e => e.MainPath)
 
+    @foreach(var m in Model.Routes) {
+        @Html.EditorFor(e => m, "RedirectEditor")
+    }
+    <div id="newitems"></div>
+
+    <a href="@Url.Action("NewRoute", "Redirect", new {area = "Hazza.Routes"})" id="addItem">Add a new redirect</a>
 </fieldset>
+
+@using (Script.Foot()) {
+    <script type="text/javascript">
+        $("#addItem").click(function () {
+            $.ajax({
+                url: this.href,
+                cache: false,
+                success: function (html) {
+                    $("#newitems").append(html);
+                }
+            });
+            return false;
+        });
+
+        $("body").on("click", "a.deleterow", function () {
+            $(this).closest(".routerow").remove();
+            return false;
+        });
+    </script>
+}

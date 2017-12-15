@@ -1,18 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Hazza.Routes.Models;
 using Orchard.Autoroute.Models;
 using Orchard.ContentManagement;
+using Orchard.Environment.Configuration;
 
 namespace Hazza.Routes.Controllers {
     public class RedirectController : Controller {
         private readonly IContentManager _contentManager;
+        private readonly ShellSettings _shell;
 
-        public RedirectController(IContentManager contentManager) {
+        public RedirectController(IContentManager contentManager, ShellSettings shell) {
             _contentManager = contentManager;
+            _shell = shell;
         }
 
         public ActionResult Index(int id, int? index) {
@@ -26,7 +27,9 @@ namespace Hazza.Routes.Controllers {
 
             var autoroutePart = item.As<AutoroutePart>();
             if(autoroutePart != null) {
-                var path = "~/" + autoroutePart.Path;
+                var path = String.IsNullOrWhiteSpace(_shell.RequestUrlPrefix) 
+                    ? "~/" + autoroutePart.Path 
+                    : "~/" + _shell.RequestUrlPrefix + "/" + autoroutePart.Path;
                 if (redirectType == Models.Redirect.MovedPermanently)
                     return RedirectPermanent(path);
 
@@ -38,6 +41,11 @@ namespace Hazza.Routes.Controllers {
                 return RedirectToRoutePermanent(routeValues);
 
             return RedirectToRoute(routeValues);
+        }
+
+        public ActionResult NewRoute() {
+            var vm = new RedirectRoute();
+            return PartialView(vm);
         }
     }
 }
